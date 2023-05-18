@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sistema de estacionamiento</title>
+    <!-- Sirve para adaptar la pagina a cualquier tamaño de pantalla !-->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link
+      href="https://file.myfontastic.com/LT9qHCM4cQUc3ptB8qhwJ5/icons.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="contenedor">
+        <h1 class="titulo glass">Portal de mascotas</h1>
+        <div class="nav_container">
+          <nav class="nav glass" id="nav" block>
+            <ul class="menu">
+              <li class="menu__item">
+                <a class="menu__link select" href="geoMapas.html"
+                  >Registro/Login</a
+                >
+              </li>
+              <li class="menu__item">
+                <a class="menu__link" id="infracciones_menu">Infracciones</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link" href="información.html">Información</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="buscador_container">
+      <div id="buscador" class="glass">
+        <div id="label_selector_container">
+          <label id="label_patente" for="">Ingrese patente</label>
+
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div id="input_search_container">
+          <input type="text" name="" id="inputBusqueda" />
+          <button class="search_button">asdasd</button>
+        </div>
+        <span class="barra"></span>
+      </div>
+    </div>
+  </body>
+</html>
