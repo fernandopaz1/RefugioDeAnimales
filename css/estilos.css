@@ -14,7 +14,7 @@ body {
   margin: 0;
   width: 100vw;
   font-family: "Open Sans", sans-serif;
-  background-image: url("/img/fondo.jpg");
+  background-image: url("../img/fondo.jpg");
   background-repeat: no-repeat;
   background-size: 100vw auto;
   background-color: #cccccc;
@@ -43,7 +43,7 @@ h6 {
   height: 250px;
   display: flex;
   justify-content: center;
-  background-image: url("/img/banner.jpg");
+  background-image: url("../img/banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
