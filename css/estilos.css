@@ -15,10 +15,10 @@ body {
   width: 100vw;
   font-family: "Open Sans", sans-serif;
   background-image: url("../img/fondo.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y no-repeat;
   background-size: 100vw auto;
   background-color: #cccccc;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 /* Fuente titulo principal */
 h1 {
@@ -92,7 +92,6 @@ h6 {
 }
 
 .nav {
-  width: 50%;
   border-radius: 2%;
   transition: all 0.4s;
   display: flex;
@@ -291,4 +290,21 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(226, 226, 226);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 183, 255);
+  border-radius: 10px;
 }
