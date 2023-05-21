@@ -38,6 +38,12 @@ h6 {
   color: rgb(16, 63, 107);
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 /* --------------------------- estilos del header ---------------- */
 .header {
   height: 250px;

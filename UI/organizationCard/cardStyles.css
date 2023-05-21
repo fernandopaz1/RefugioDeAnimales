@@ -28,3 +28,14 @@
   width: auto;
   height: 100px;
 }
+
+.destacada {
+  border: 2px solid gold;
+}
+
+#map {
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 const organizacionesDiv = document.getElementById("blogPosts");
 
 const template = `
-  <div class="organizationCardContainer">
+  <div class="organizationCardContainer {destacada}">
   <h3 class="org_name_card">{nombre}</h3>
   <div class="body_organization_card">
     <div class="datos_container_card">
@@ -12,13 +12,17 @@ const template = `
     <img class="imagen_org_card" src="{imagen}" />
   </div>
 </div>
-
   `;
+
+let toVisualizeInMap = [];
 
 // Iterate over the blog posts array and generate HTML
 function renderOrganizationCards(organizaciones) {
   // antes de dibujar las cards elimina todo
   organizacionesDiv.innerHTML = "";
+
+  //Indico que son las organizaciones a visualizar en el mapa
+  toVisualizeInMap = organizaciones;
   organizaciones.forEach((organization) => {
     // Create elements
     let orgTemplate = template;
@@ -30,6 +34,12 @@ function renderOrganizationCards(organizaciones) {
     orgTemplate = orgTemplate.replace("{horario}", organization.horarios);
     orgTemplate = orgTemplate.replace("{telefono}", organization.telefono);
     orgTemplate = orgTemplate.replace("{imagen}", organization.foto);
+
+    // si la organizacion esta destacada agrego la clase correspodiente sino no se agrega nada
+    orgTemplate = orgTemplate.replace(
+      "{destacada}",
+      organization.destacada ? "destacada glass" : ""
+    );
 
     const orgDiv = document.createElement("div");
     orgDiv.innerHTML = orgTemplate;
