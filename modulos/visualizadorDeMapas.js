@@ -1,13 +1,3 @@
-var map = L.map("map").setView([-34.5067, -58.7064], 14);
-
-L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-  maxZoom: 18,
-}).addTo(map);
-
-L.control.scale().addTo(map);
-
 const drawer = Drawer();
 
 const tipoPuntoMapa = {
@@ -27,10 +17,10 @@ const punto = (nombre, lat, long, descripcion, tipo) => {
   this.getLong = () => long;
   this.getDescripcion = () => descripcion;
   this.getNombre = () => nombre;
-  this.esComercio = () => tipo == "comercio";
-  this.esEstacionamiento = () => tipo == "estacionamiento";
-  this.esDeposito = () => tipo == "deposito";
-  this.esMiAuto = () => tipo == "Estacionamiento activo";
+  this.esAviso = () => this.tipo === tipoPuntoMapa.avisos;
+  this.esOrganizacion = () => this.tipo === tipoPuntoMapa.organizacion;
+  this.esOrganizacionDestacada = () =>
+    this.tipo === tipoPuntoMapa.oraganizacionDestacada;
   this.equals = (punto) => {
     return (
       this.getLat() == punto.getLat() &&
@@ -46,10 +36,9 @@ const punto = (nombre, lat, long, descripcion, tipo) => {
     getDescripcion,
     getNombre,
     equals,
-    esComercio,
-    esEstacionamiento,
-    esDeposito,
-    esMiAuto,
+    esAviso,
+    esOrganizacion,
+    esOrganizacionDestacada,
   };
 };
 
@@ -65,20 +54,18 @@ function removeAllLayers() {}
 
 function drawOrganizationInMap(organizations) {
   organizations.forEach((o) => {
-    if (o.direccion.coordenadas === null) return;
+    if (o.direccion.coordenadas === undefined) return;
     a = drawer.drawLocationInMap(
       punto(
         o.nombre,
-        o.direccion.coordenadas[0],
-        o.direccion.coordenadas[1],
+        o.direccion.coordenadas.y,
+        o.direccion.coordenadas.x,
+        o.descripcion,
         o.destacada
           ? tipoPuntoMapa.oraganizacionDestacada
           : tipoPuntoMapa.organizacion
       ),
       map
     );
-
-    markerGroupOrganizaciones.addLayer(a);
-    map.addLayer(markerGroupOrganizaciones);
   });
 }

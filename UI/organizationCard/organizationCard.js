@@ -44,21 +44,11 @@ function renderOrganizationCards(organizaciones) {
     const orgDiv = document.createElement("div");
     orgDiv.innerHTML = orgTemplate;
     /*
-    const titleElement = document.createElement("h2");
-    const contentElement = document.createElement("p");
-
-    // Set the content
-    titleElement.textContent = organization.nombre;
-    contentElement.textContent = organization.descripcion;
-
-    // Append elements to the post div
-    orgDiv.appendChild(titleElement);
-    orgDiv.appendChild(contentElement);
-
     // Append the post div to the main div
     */
     organizacionesDiv.appendChild(orgDiv);
   });
+  drawOrganizationInMap(organizaciones);
 }
 
 renderOrganizationCards(organizaciones);
