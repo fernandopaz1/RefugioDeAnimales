@@ -148,7 +148,6 @@ h6 {
 }
 #buscador {
   display: flex;
-  flex-direction: column;
   width: 50%;
 }
 
@@ -313,4 +312,14 @@ input:checked + .slider:before {
 ::-webkit-scrollbar-thumb {
   background: rgb(0, 183, 255);
   border-radius: 10px;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
 }

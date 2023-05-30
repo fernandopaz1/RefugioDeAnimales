@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="css/estilos.css" />
     <link rel="stylesheet" href="UI/organizationCard/cardStyles.css" />
+    <link rel="stylesheet" href="UI/organizationStyles//organizationStyles.css" />
 
     <link
       href="https://file.myfontastic.com/LT9qHCM4cQUc3ptB8qhwJ5/icons.css"
@@ -48,23 +49,32 @@
       </div>
     </header>
 
-    <div class="buscador_container">
-      <div id="buscador" class="glass">
-        <div id="label_selector_container">
-          <label id="label_patente" for="">Ingrese organización</label>
-
-          <label class="switch">
+    <!-- 
+       <label class="switch">
             <input type="checkbox" />
             <span class="slider round"></span>
           </label>
-        </div>
-
-        <div id="input_search_container">
-          <input type="text" name="" id="inputBusqueda" />
-          <button class="search_button">asdasd</button>
-        </div>
-        <span class="barra"></span>
-      </div>
+        -->
+        <div class="buscador_container">
+          <div id="buscador" class="flexRow glass">
+            <div class="searchFilterContainer">
+              <label id="label_patente" for="">Ingrese organización</label>         
+              <input type="text" name="" id="inputBusquedaOrganizacionNombre" />
+            </div>
+            <div class="searchFilterContainer">
+              <label id="label_patente" for="">Ingrese dirección</label>         
+              <input type="text" name="" id="inputBusquedaOrganizacionDireccion" />
+            </div>
+            <div class="searchFilterContainer">
+              <label id="labelSelectServicio" for="selectServicio">Ingrese servicio</label>       
+              <select name="selectServicio" id="selectServicio" onchange="console.log(this)"></select>
+            </div>
+            <div class="searchFilterContainer">
+              <label id="labelSelectActividad" for="selectActividad">Ingrese actividad</label>         
+              <select type="text" name="selectActividad" id="selectActividad" onchange="console.log(this)"></select>
+            </div>
+          </div>
+          <button class="search_button">Buscar</button>
     </div>
 
     <div
@@ -76,12 +86,12 @@
     </div>
 
     <script src="modulos/jquery-3.5.1.min.js"></script>
+    <script src="persistencia/organizacion/organizacion.js"></script>
 
     <script src="modulos/drawer.js"></script>
     <script src="src/config.js"></script>
     <script src="modulos/normalizadorDeDirecciones.js"></script>
 
-    <script src="persistencia/organizacion/organizacion.js"></script>
     <script src="modulos/visualizadorDeMapas.js"></script>
     <script src="UI/organizationCard/organizationCard.js"></script>
   </body>
