@@ -1,16 +1,16 @@
-const ActividadesOrganizaciones = {
+const ActividadesOrganizaciones = Object.freeze({
   colecta: "colecta bénefica",
   capacitaciones: "capacitaciones",
   visitas: "visitas guiadas",
-};
+});
 
-const ServciosOrganizaciones = {
+const ServciosOrganizaciones =  Object.freeze({
   vacunacion: "vacunacion",
   veterinario: "veterinario",
   adopcion: "adopcion",
   guarderia: "guarderia",
   entrenamiento: "entrenamiento",
-};
+});
 
 class Organizacion {
   constructor(

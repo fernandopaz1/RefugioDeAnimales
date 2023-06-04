@@ -56,25 +56,21 @@
           </label>
         -->
         <div class="buscador_container">
-          <div id="buscador" class="flexRow glass">
-            <div class="searchFilterContainer">
-              <label id="label_patente" for="">Ingrese organización</label>         
-              <input type="text" name="" id="inputBusquedaOrganizacionNombre" />
-            </div>
-            <div class="searchFilterContainer">
-              <label id="label_patente" for="">Ingrese dirección</label>         
-              <input type="text" name="" id="inputBusquedaOrganizacionDireccion" />
-            </div>
+          <div id="buscador" class="flexRow glass"> 
             <div class="searchFilterContainer">
               <label id="labelSelectServicio" for="selectServicio">Ingrese servicio</label>       
-              <select name="selectServicio" id="selectServicio" onchange="console.log(this)"></select>
+              <select name="selectServicio" id="selectServicio" onchange="console.log(this)">
+                <option value="" selected>Seleccione el servicio</option>
+              </select>
             </div>
             <div class="searchFilterContainer">
               <label id="labelSelectActividad" for="selectActividad">Ingrese actividad</label>         
-              <select type="text" name="selectActividad" id="selectActividad" onchange="console.log(this)"></select>
+              <select type="text" name="selectActividad" id="selectActividad" onchange="console.log(this)">  
+                <option value="" selected>Seleccione la actividad</option>
+              </select>
             </div>
           </div>
-          <button class="search_button">Buscar</button>
+          <button id="buttonBuscarOrganizaciones" class="search_button" onClick="onClickBuscarOrganizaciones()">Buscar</button>
     </div>
 
     <div
@@ -86,13 +82,16 @@
     </div>
 
     <script src="modulos/jquery-3.5.1.min.js"></script>
+    <script src="src/config.js"></script>
+    <script src="modulos/administradorDeOrganizaciones.js"></script>
+    <script src="modulos/normalizadorDeDirecciones.js"></script>
     <script src="persistencia/organizacion/organizacion.js"></script>
 
     <script src="modulos/drawer.js"></script>
-    <script src="src/config.js"></script>
-    <script src="modulos/normalizadorDeDirecciones.js"></script>
 
     <script src="modulos/visualizadorDeMapas.js"></script>
     <script src="UI/organizationCard/organizationCard.js"></script>
+    <script src="src/mainOrganizaciones.js"></script>
+
   </body>
 </html>

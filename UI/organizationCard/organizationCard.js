@@ -1,7 +1,7 @@
 const organizacionesDiv = document.getElementById("blogPosts");
 
 const template = `
-  <div class="organizationCardContainer {destacada}">
+  <div class="organizationCardContainer {destacada}" onClick="onClickCard(event)" lat='{latData}' long='{longData}'>
   <h3 class="org_name_card">{nombre}</h3>
   <div class="body_organization_card">
     <div class="datos_container_card">
@@ -15,6 +15,14 @@ const template = `
   `;
 
 let toVisualizeInMap = [];
+
+const onClickCard = (event) => {
+  let long = event.currentTarget.getAttribute('long');
+  let lat = event.currentTarget.getAttribute('lat');
+
+  if(lat && long)
+    map.setView([lat, long], 14);
+}
 
 // Iterate over the blog posts array and generate HTML
 function renderOrganizationCards(organizaciones) {
@@ -34,6 +42,11 @@ function renderOrganizationCards(organizaciones) {
     orgTemplate = orgTemplate.replace("{horario}", organization.horarios);
     orgTemplate = orgTemplate.replace("{telefono}", organization.telefono);
     orgTemplate = orgTemplate.replace("{imagen}", organization.foto);
+    
+    if(organization.direccion.coordenadas){
+      orgTemplate = orgTemplate.replace("{longData}", organization.direccion.coordenadas.x);
+      orgTemplate = orgTemplate.replace("{latData}", organization.direccion.coordenadas.y);
+    }
 
     // si la organizacion esta destacada agrego la clase correspodiente sino no se agrega nada
     orgTemplate = orgTemplate.replace(
@@ -51,4 +64,4 @@ function renderOrganizationCards(organizaciones) {
   drawOrganizationInMap(organizaciones);
 }
 
-renderOrganizationCards(organizaciones);
+renderOrganizationCards(buscadorDeOrganizaciones(null, null));

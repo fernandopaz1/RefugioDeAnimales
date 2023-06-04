@@ -50,7 +50,8 @@ let markerGroupOrganizaciones = L.markerClusterGroup({
   },
 });
 
-function removeAllLayers() {}
+function removeAllLayers() {
+}
 
 function drawOrganizationInMap(organizations) {
   organizations.forEach((o) => {
