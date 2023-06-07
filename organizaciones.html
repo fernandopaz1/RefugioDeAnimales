@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Sistema de estacionamiento</title>
+    <title>Portal de mascotas</title>
     <!-- Sirve para adaptar la pagina a cualquier tamaño de pantalla !-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -30,9 +30,6 @@
         <div class="nav_container">
           <nav class="nav glass" id="nav" block>
             <ul class="menu">
-              <li class="menu__item">
-                <a class="menu__link" href="login.html">Registro/Login</a>
-              </li>
               <li class="menu__item">
                 <a class="menu__link" href="avisos.html" id="avisos_menu"
                   >Avisos</a
@@ -90,23 +87,32 @@
             <label id="labelInputDireccionNewOrganization" for="inputDireccionNewOrganization">Dirección</label>       
             <input name="inputDireccionNewOrganization" id="inputDireccionNewOrganization"></input>
             
-            <label id="selectDireccionNewOrganization" for="selectDireccionNewOrganization">Dirección</label>       
+            <label id="labelDireccionNewOrganization" for="selectDireccionNewOrganization">Dirección</label>       
             <select name="selectDireccionNewOrganization" id="selectDireccionNewOrganization" onchange="console.log(this)">
-              <option value="" selected>Seleccione el servicio</option>
+              <option value="" selected>Seleccione Direccion</option>
             </select>
           
           </div>
 
           <div class="searchFilterContainer">
-            <label id="labelInputDescripcionNewOrganization" for="labelInputDescripcionNewOrganization">Descripcion</label>       
-            <textarea  name="labelInputDescripcionNewOrganization" id="labelInputDescripcionNewOrganization" rows="2"></textarea >
+            <label id="labelInputDescripcionNewOrganization" for="inputDescripcionNewOrganization">Descripcion</label>       
+            <textarea  name="inputDescripcionNewOrganization" id="inputDescripcionNewOrganization" rows="2"></textarea >
           </div>
 
-          <div id="serviciosDiv" class="searchFilterContainer"></div>
+          <div style="display:flex; flex-direction:column;">
+            <label id="" for="">Servicios</label>       
+            <div id="serviciosDiv" class="searchFilterContainer"></div>
+          </div>
 
-          <div id="actividadesDiv" class="searchFilterContainer"></div>
+          <div style="display:flex; flex-direction:column; ">
+            <label id="" for="">Actividades</label>       
+            <div id="actividadesDiv" class="searchFilterContainer"></div>
+          </div>
 
-
+          <div class="buttonModal">
+            <label id="errorNewOrganization" class="error"></label>
+            <button id="buttonSaveOrganizacion" class="search_button">Guardar</button>
+          </div>
         </div>
       </div>
     </div>

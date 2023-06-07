@@ -12,17 +12,14 @@ class DireccionNormalizada {
     this.nombre_partido = json.nombre_partido;
     this.tipo = json.tipo;
   }
-  toString() {
-    return `${this.direccion}`;
-  }
 }
 
 const url = Config.urlNormalizar;
 
-const normalizarDireccion = function (direccion) {
-  callURL = url + "/?" + direccion;
+const normalizarDireccion = async function (direccion) {
+  callURL = url + "/?direccion=" + direccion+"&geocodificacion=TRUE";
   listaDirecciones = [];
-  fetch(callURL)
+  await fetch(callURL)
     .then((res) => res.json())
     .then((data) => {
       listaDirecciones = data.direccionesNormalizadas.map(

@@ -12,5 +12,12 @@ var closeModal = document.getElementsByClassName("close")[0];
 var serviciosDiv = document.getElementById("serviciosDiv");
 var actividadesDiv = document.getElementById("actividadesDiv");
 
+var inputNombreNewOrganization = document.getElementById("inputNombreNewOrganization");
+
+var inputDescripcionNewOrganization = document.getElementById("inputDescripcionNewOrganization");
+
 var inputDireccionNewOrganization = document.getElementById("inputDireccionNewOrganization");
 var selectDireccionNewOrganization  = document.getElementById("selectDireccionNewOrganization");
+
+var errorNewOrganization = document.getElementById("errorNewOrganization");
+var buttonSaveOrganizacion  = document.getElementById("buttonSaveOrganizacion")

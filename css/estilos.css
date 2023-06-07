@@ -362,3 +362,13 @@ input:checked + .slider:before {
   text-decoration: none;
   cursor: pointer;
 }
+
+#serviciosDiv, #actividadesDiv {
+  display:flex ;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.error {
+ color : red;
+}

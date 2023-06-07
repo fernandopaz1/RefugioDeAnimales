@@ -42,15 +42,15 @@ window.onclick = function(event) {
 }
 
 const templateServiciosInput = `
-  <div class="organizationCardContainer">
+  <div class="serviciosInputContainer">
   <label>
-    <input id="{service}Input" type="checkbox" name="{service}Input" class="inline" />{serviceName}
+    <input id="{service}Input" value={service} type="checkbox" name="{service}Input" class="inline serviceSeleccionadas" />{serviceName}
   </label>
   </div>
   `;
 
 const renderServicios = () => {
-  serviciosDiv.innerHTML = ""
+  serviciosDiv.innerHTML = ''
   for(var s in ServciosOrganizaciones){
     let orgTemplate = templateServiciosInput;
     orgTemplate = orgTemplate.replace("{service}", s);
@@ -60,15 +60,15 @@ const renderServicios = () => {
 }
 
 const actividadesServiciosInput = `
-  <div class="organizationCardContainer">
+  <div class="actividadesInputContainer">
   <label>
-    <input id="{actividad}Input" type="checkbox" name="{actividad}Input" class="inline" />{actividadName}
+    <input id="{actividad}Input" type="checkbox" name="{actividad}Input" class="inline actividadesSeleccionadas" />{actividadName}
   </label>
   </div>
   `;
 
   const renderActividades = () => {
-    actividadesDiv.innerHTML = ""
+    actividadesDiv.innerHTML = ''
     for(var s in ActividadesOrganizaciones){
       let orgTemplate = actividadesServiciosInput;
       orgTemplate = orgTemplate.replace("{actividad}", s);
@@ -79,22 +79,95 @@ const actividadesServiciosInput = `
 
 renderServicios()
 renderActividades()
-
+let selectedDirection 
 //selectDireccionNewOrganization
 inputDireccionNewOrganization.onchange =  (event) => {
   if(event.target.value && event.target.value.length > 4) {
    // inputDireccionNewOrganization.isContentEditable = false
     let direccionesNormalizadas = normalizarDireccion(event.target.value)
     //inputDireccionNewOrganization.isContentEditable = true
+    direccionesNormalizadas.then(response => {
+      localStorage.setItem("direccionesNormalizadas", JSON.stringify(response));
 
-    for(var s in direccionesNormalizadas){
-      thisId = s;
-      thisText = s.toString();
-      var option = document.createElement("option");
-      option.text = thisText;
-      option.value = thisId;
-      selectServicio.add(option);
-    }
-
+      for(var s in response){
+        thisId = s;
+        thisText = response[s].direccion;
+        var option = document.createElement("option");
+        option.text = thisText;
+        option.value = thisId;
+        selectDireccionNewOrganization.add(option);
+      }
+      
+    })
   }
 }
+
+const disableNewOrganizationButton = () =>{
+  buttonSaveOrganizacion.disabled = true;
+}
+const enableNewOrganizationButton = () =>{
+  buttonSaveOrganizacion.disabled = false;
+}
+
+
+
+const validateNewOrganizationForm = () => {
+  if(!inputNombreNewOrganization.value || inputNombreNewOrganization.value === ""){
+    disableNewOrganizationButton();
+    errorNewOrganization.innerHTML = "Debe completar el nombre de la organizacion<br>"
+    return;
+  } 
+
+  if(!selectedDirection){
+    disableNewOrganizationButton();
+    errorNewOrganization.innerHTML = "Debe seleccionar una direccion<br>"
+    return;
+  }
+  enableNewOrganizationButton();
+  errorNewOrganization.innerHTML = ""
+}
+
+inputNombreNewOrganization.onchange = validateNewOrganizationForm
+selectDireccionNewOrganization.onchange = (event)=> {
+  let direccionesNormalizadas = JSON.parse(localStorage.getItem("direccionesNormalizadas"));
+  selectedDirection = direccionesNormalizadas[event.target.value-1]
+  validateNewOrganizationForm()
+}
+
+const getServiciosSeleccionados = () => {
+    var serviciosDom = document.getElementsByClassName("serviceSeleccionadas")
+    let services = []
+    for(let i=0; i<serviciosDom.length; i++) {
+      if(serviciosDom[i].checked)
+        services.push(serviciosDom[i].value)
+    }
+    return services
+}
+
+const getActividadesSeleccionados = () => {
+  var actividadesDom = document.getElementsByClassName("actividadesSeleccionadas")
+  let actividades = []
+  for(let i=0; i<actividadesDom.length; i++) {
+    if(actividadesDom[i].checked)
+      actividades.push(actividadesDom[i].value)
+  }
+  return actividades
+}
+
+buttonSaveOrganizacion.onclick = () => {
+  organizacionesPendientes.push(new Organizacion(
+    inputNombreNewOrganization.value,
+    inputDescripcionNewOrganization.value,
+    selectedDirection,
+    null,
+    null,
+    null,
+    false,
+    getServiciosSeleccionados(),
+    getActividadesSeleccionados()
+  ))
+
+  modal.style.display = "none";
+  alert("Organizacion pendiente de aprobación")
+}
+
