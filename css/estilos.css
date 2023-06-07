@@ -372,3 +372,12 @@ input:checked + .slider:before {
 .error {
  color : red;
 }
+
+#direccionesContainer {
+  width : 100%;
+  background-color : white;
+}
+
+.direccionesASelccionar:hover {
+  background-color : rgb(134, 241, 255);
+}

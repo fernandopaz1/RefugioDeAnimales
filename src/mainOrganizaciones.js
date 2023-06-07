@@ -79,8 +79,16 @@ const actividadesServiciosInput = `
 
 renderServicios()
 renderActividades()
+
+const selectDireccion = (event) => {
+  let id = event.currentTarget.getAttribute('idDireccion')
+  let direccionesNormalizadas = JSON.parse(localStorage.getItem("direccionesNormalizadas"));
+  selectedDirection = direccionesNormalizadas[id]
+  inputDireccionNewOrganization.value = selectedDirection.direccion
+  direccionesContainer.innerHTML=""
+}
+
 let selectedDirection 
-//selectDireccionNewOrganization
 inputDireccionNewOrganization.onchange =  (event) => {
   if(event.target.value && event.target.value.length > 4) {
    // inputDireccionNewOrganization.isContentEditable = false
@@ -89,13 +97,15 @@ inputDireccionNewOrganization.onchange =  (event) => {
     direccionesNormalizadas.then(response => {
       localStorage.setItem("direccionesNormalizadas", JSON.stringify(response));
 
+      direccionesContainer.innerHTML=""
+
       for(var s in response){
         thisId = s;
         thisText = response[s].direccion;
         var option = document.createElement("option");
         option.text = thisText;
         option.value = thisId;
-        selectDireccionNewOrganization.add(option);
+        direccionesContainer.innerHTML += `<p class="direccionesASelccionar" onClick="selectDireccion(event)" idDireccion="${thisId}">${thisText}</p>`;
       }
       
     })
@@ -128,11 +138,7 @@ const validateNewOrganizationForm = () => {
 }
 
 inputNombreNewOrganization.onchange = validateNewOrganizationForm
-selectDireccionNewOrganization.onchange = (event)=> {
-  let direccionesNormalizadas = JSON.parse(localStorage.getItem("direccionesNormalizadas"));
-  selectedDirection = direccionesNormalizadas[event.target.value-1]
-  validateNewOrganizationForm()
-}
+
 
 const getServiciosSeleccionados = () => {
     var serviciosDom = document.getElementsByClassName("serviceSeleccionadas")

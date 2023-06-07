@@ -54,6 +54,13 @@
         -->
         <div class="buscador_container">
           <div id="buscador" class="flexRow glass"> 
+
+            <div class="searchFilterContainer">
+              <label id="labelNombreOrganizacion" for="inputNombreOrganizacion">Ingrese Nombre</label>       
+              <input name="inputNombreOrganizacion" id="inputNombreOrganizacion" onchange="console.log(this)">
+              </input>
+            </div>
+
             <div class="searchFilterContainer">
               <label id="labelSelectServicio" for="selectServicio">Ingrese servicio</label>       
               <select name="selectServicio" id="selectServicio" onchange="console.log(this)">
@@ -85,13 +92,8 @@
 
           <div class="searchFilterContainer">
             <label id="labelInputDireccionNewOrganization" for="inputDireccionNewOrganization">Dirección</label>       
-            <input name="inputDireccionNewOrganization" id="inputDireccionNewOrganization"></input>
-            
-            <label id="labelDireccionNewOrganization" for="selectDireccionNewOrganization">Dirección</label>       
-            <select name="selectDireccionNewOrganization" id="selectDireccionNewOrganization" onchange="console.log(this)">
-              <option value="" selected>Seleccione Direccion</option>
-            </select>
-          
+            <input name="inputDireccionNewOrganization" id="inputDireccionNewOrganization" placeholder="Ej.: loria 300, lomas"></input>
+            <div id="direccionesContainer"></div>
           </div>
 
           <div class="searchFilterContainer">

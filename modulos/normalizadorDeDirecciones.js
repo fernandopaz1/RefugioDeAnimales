@@ -26,5 +26,5 @@ const normalizarDireccion = async function (direccion) {
         (dnJson) => new DireccionNormalizada(dnJson)
       );
     });
-  return listaDirecciones;
+  return listaDirecciones.filter((d) => d.tipo === "calle_altura");
 };

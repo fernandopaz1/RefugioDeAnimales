@@ -1,23 +1,24 @@
 // campos de filtro de busqueda
 const selectServicio = document.getElementById("selectServicio");
 const selectActividad = document.getElementById("selectActividad");
+const inputNombreOrganizacion = document.getElementById("inputNombreOrganizacion");
 
 const buttonBuscarOrganizaciones = document.getElementById("buttonBuscarOrganizaciones");
 
+// creacion de organizacion
+const modal = document.getElementById("myModal");
+const buttonModal = document.getElementById("buttonNuevaOrganizaciones");
+const closeModal = document.getElementsByClassName("close")[0];
 
-var modal = document.getElementById("myModal");
-var buttonModal = document.getElementById("buttonNuevaOrganizaciones");
-var closeModal = document.getElementsByClassName("close")[0];
+const serviciosDiv = document.getElementById("serviciosDiv");
+const actividadesDiv = document.getElementById("actividadesDiv");
+const direccionesContainer= document.getElementById("direccionesContainer");
 
-var serviciosDiv = document.getElementById("serviciosDiv");
-var actividadesDiv = document.getElementById("actividadesDiv");
+const inputNombreNewOrganization = document.getElementById("inputNombreNewOrganization");
 
-var inputNombreNewOrganization = document.getElementById("inputNombreNewOrganization");
+const inputDescripcionNewOrganization = document.getElementById("inputDescripcionNewOrganization");
 
-var inputDescripcionNewOrganization = document.getElementById("inputDescripcionNewOrganization");
+const inputDireccionNewOrganization = document.getElementById("inputDireccionNewOrganization");
 
-var inputDireccionNewOrganization = document.getElementById("inputDireccionNewOrganization");
-var selectDireccionNewOrganization  = document.getElementById("selectDireccionNewOrganization");
-
-var errorNewOrganization = document.getElementById("errorNewOrganization");
-var buttonSaveOrganizacion  = document.getElementById("buttonSaveOrganizacion")
+const errorNewOrganization = document.getElementById("errorNewOrganization");
+const buttonSaveOrganizacion  = document.getElementById("buttonSaveOrganizacion")
