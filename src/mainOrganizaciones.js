@@ -89,6 +89,23 @@ const selectDireccion = (event) => {
 }
 
 let selectedDirection 
+
+const disableNewOrganizationButton = () =>{
+  buttonSaveOrganizacion.disabled = true;
+}
+const enableNewOrganizationButton = () =>{
+  buttonSaveOrganizacion.disabled = false;
+}
+
+
+
+const validateNewOrganizationForm = () => {
+  if(!inputNombreNewOrganization.value || inputNombreNewOrganization.value === ""){
+    disableNewOrganizationButton();
+    errorNewOrganization.innerHTML = "Debe completar el nombre de la organizacion<br>"
+    return;
+  } 
+
 inputDireccionNewOrganization.onchange =  (event) => {
   if(event.target.value && event.target.value.length > 4) {
    // inputDireccionNewOrganization.isContentEditable = false
@@ -107,26 +124,12 @@ inputDireccionNewOrganization.onchange =  (event) => {
         option.value = thisId;
         direccionesContainer.innerHTML += `<p class="direccionesASelccionar" onClick="selectDireccion(event)" idDireccion="${thisId}">${thisText}</p>`;
       }
-      
+      validateNewOrganizationForm()
     })
   }
 }
 
-const disableNewOrganizationButton = () =>{
-  buttonSaveOrganizacion.disabled = true;
-}
-const enableNewOrganizationButton = () =>{
-  buttonSaveOrganizacion.disabled = false;
-}
 
-
-
-const validateNewOrganizationForm = () => {
-  if(!inputNombreNewOrganization.value || inputNombreNewOrganization.value === ""){
-    disableNewOrganizationButton();
-    errorNewOrganization.innerHTML = "Debe completar el nombre de la organizacion<br>"
-    return;
-  } 
 
   if(!selectedDirection){
     disableNewOrganizationButton();
@@ -138,7 +141,6 @@ const validateNewOrganizationForm = () => {
 }
 
 inputNombreNewOrganization.onchange = validateNewOrganizationForm
-
 
 const getServiciosSeleccionados = () => {
     var serviciosDom = document.getElementsByClassName("serviceSeleccionadas")
@@ -161,6 +163,8 @@ const getActividadesSeleccionados = () => {
 }
 
 buttonSaveOrganizacion.onclick = () => {
+  validateNewOrganizationForm()
+  if(buttonSaveOrganizacion.disabled) return
   organizacionesPendientes.push(new Organizacion(
     inputNombreNewOrganization.value,
     inputDescripcionNewOrganization.value,
