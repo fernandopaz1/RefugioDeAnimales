@@ -105,6 +105,22 @@ const validateNewOrganizationForm = () => {
     errorNewOrganization.innerHTML = "Debe completar el nombre de la organizacion<br>"
     return;
   } 
+  if(!selectedDirection){
+    disableNewOrganizationButton();
+    errorNewOrganization.innerHTML = "Debe seleccionar una direccion<br>"
+    return;
+  }if(selectedDirection.tipo !== "calle_altura"){
+    disableNewOrganizationButton();
+    errorNewOrganization.innerHTML = 'Debe seleccionar una direccion tipo "calle_altura"<br>'
+    return;
+  }if(!selectedDirection.coordenadas){
+    disableNewOrganizationButton();
+    errorNewOrganization.innerHTML = 'La direccion seleccionada no posee coordenadas, disminuya la lista a un elemento antes de elegir<br>'
+    return;
+  }
+  enableNewOrganizationButton();
+  errorNewOrganization.innerHTML = ""
+}
 
 inputDireccionNewOrganization.onchange =  (event) => {
   if(event.target.value && event.target.value.length > 4) {
@@ -131,14 +147,7 @@ inputDireccionNewOrganization.onchange =  (event) => {
 
 
 
-  if(!selectedDirection){
-    disableNewOrganizationButton();
-    errorNewOrganization.innerHTML = "Debe seleccionar una direccion<br>"
-    return;
-  }
-  enableNewOrganizationButton();
-  errorNewOrganization.innerHTML = ""
-}
+  
 
 inputNombreNewOrganization.onchange = validateNewOrganizationForm
 
