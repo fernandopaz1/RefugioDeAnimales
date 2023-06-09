@@ -3,28 +3,30 @@
   scroll-behavior: smooth;
   height: 50vh;
   width: 40%;
+  background-color: #fff;
 }
 
-.organizationCardContainer {
+.avisoCardContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0px 50px;
+  background-color: #fff;
 }
 
-.body_organization_card {
+.body_aviso_card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.datos_container_card {
+.datos_aviso_card {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.imagen_org_card {
+.imagen_av_card {
   width: auto;
   height: 100px;
 }

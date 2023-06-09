@@ -22,3 +22,8 @@ const inputDireccionNewOrganization = document.getElementById("inputDireccionNew
 
 const errorNewOrganization = document.getElementById("errorNewOrganization");
 const buttonSaveOrganizacion  = document.getElementById("buttonSaveOrganizacion")
+
+// busqueda de avisos
+const buttonBuscarAvisos = document.getElementById("buttonBuscarAvisos")
+const selectAviso = document.getElementById("selectAviso")
+const inputTipoAnimal = document.getElementById("inputTipoAnimal")

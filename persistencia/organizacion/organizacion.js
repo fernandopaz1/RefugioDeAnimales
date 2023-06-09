@@ -81,7 +81,7 @@ let organizaciones = [
     }),
     "Martes a sábado de 10:00 AM a 6:00 PM",
     "987-654-321",
-    "persistencia/organizacion/imagenes/1.png",
+    "persistencia/organizacion/imagenes/2.png",
     true,
     [ServciosOrganizaciones.adopcion, ServciosOrganizaciones.guarderia],
     [
@@ -95,7 +95,7 @@ let organizaciones = [
     "Calle Amistad, Ciudad",
     "Lunes a viernes de 8:00 AM a 4:00 PM",
     "555-123-456",
-    "persistencia/organizacion/imagenes/1.png",
+    "persistencia/organizacion/imagenes/3.png",
     true,
     [ServciosOrganizaciones.veterinario, ServciosOrganizaciones.entrenamiento],
     [ActividadesOrganizaciones.colecta, ActividadesOrganizaciones.visitas]
@@ -106,7 +106,7 @@ let organizaciones = [
     "Calle Felicidad, Ciudad",
     "Lunes a sábado de 11:00 AM a 7:00 PM",
     "777-888-999",
-    "persistencia/organizacion/imagenes/1.png",
+    "persistencia/organizacion/imagenes/4.gif",
     false,
     [ServciosOrganizaciones.adopcion, ServciosOrganizaciones.vacunacion],
     [
@@ -120,7 +120,7 @@ let organizaciones = [
     "Avenida Gatos, Ciudad",
     "Miércoles a domingo de 12:00 PM a 8:00 PM",
     "444-555-666",
-    "persistencia/organizacion/imagenes/1.png",
+    "persistencia/organizacion/imagenes/5.gif",
     true,
     [ServciosOrganizaciones.guarderia, ServciosOrganizaciones.entrenamiento],
     [ActividadesOrganizaciones.colecta, ActividadesOrganizaciones.visitas]
@@ -131,7 +131,7 @@ let organizaciones = [
     "Calle Esperanza, Ciudad",
     "Martes a viernes de 9:00 AM a 6:00 PM",
     "222-333-444",
-    "persistencia/organizacion/imagenes/1.png",
+    "persistencia/organizacion/imagenes/6.jpg",
     true,
     [ServciosOrganizaciones.adopcion, ServciosOrganizaciones.veterinario],
     [
@@ -145,7 +145,7 @@ let organizaciones = [
     "Avenida Amor, Ciudad",
     "Lunes a sábado de 10:00 AM a 5:00 PM",
     "666-777-888",
-    "persistencia/organizacion/imagenes/1.png",
+    "persistencia/organizacion/imagenes/7.jpg",
     false,
     [ServciosOrganizaciones.entrenamiento, ServciosOrganizaciones.guarderia],
     [

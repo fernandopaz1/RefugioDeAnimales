@@ -54,14 +54,21 @@
         -->
         <div class="buscador_container">
           <div id="buscador" class="flexRow glass" style="display:flex; justify-content:center"> 
+
+            <div class="searchFilterContainer" style="display:flex; justify-content:center">
+              <label id="labelTipoAnimal" for="inputTipoAnimal">Tipo de aviso</label>         
+              <input type="text" name="inputTipoAnimal" id="inputTipoAnimal" onchange="console.log(this)"></input>
+            </div>
+
             <div class="searchFilterContainer" style="display:flex; justify-content:center">
               <label id="labelSelectAviso" for="selectAviso">Tipo de aviso</label>         
               <select type="text" name="selectAviso" id="selectAviso" onchange="console.log(this)">  
                 <option value="" selected>Seleccione tipo de aviso</option>
-                <option value="adopcion" selected>Adopción</option>
-                <option value="busqueda" selected>Busqueda</option>
+                <option value="adopcion" >Adopción</option>
+                <option value="busqueda">Busqueda</option>
               </select>
             </div>
+            <button id="buttonBuscarAvisos">Buscar</button>
           </div>    
     </div>
 
@@ -78,14 +85,14 @@
 
     <script src="modulos/jquery-3.5.1.min.js"></script>
     <script src="src/config.js"></script>
-    <script src="modulos/administradorDeOrganizaciones.js"></script>
-    <script src="modulos/normalizadorDeDirecciones.js"></script>
-    <script src="persistencia/organizacion/organizacion.js"></script>
+    <script src="persistencia/aviso/avisos.js"></script>
 
-    <script src="persistencia/organizacion/organizacion.js"></script>
+    <script src="modulos/administradorDeAvisos.js"></script>
+s
 
+  
     <script src="UI/AvisosCards/avisosCard.js"></script>
-    <script src="src/mainOrganizaciones.js"></script>
-
+    <script src="src/mainAvisos.js"></script>
+  
   </body>
 </html>

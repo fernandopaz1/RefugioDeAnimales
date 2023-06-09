@@ -1,81 +1,73 @@
 const organizacionesDiv = document.getElementById("blogPosts");
 
 const templateAdopcion = `
-  <div class="organizationCardContainer {destacada}" onClick="onClickCard(event)" lat='{latData}' long='{longData}'>
-  <h3 class="org_name_card">{nombre}</h3>
-  <div class="body_organization_card">
+  <div class="avisoCardContainer">
+  <h3 class="aviso_name_card">Adopcion</h3>
+  <div class="body_aviso_card">
     <div class="datos_container_card">
-      <p class="org_descripcion_card">{descripcion}</p>
-      <p class="org_horario_card">Horario: {horario}</p>
-      <p class="org_telefono_card">Telefono: {telefono}</p>
+      <p class="av_descripcion_card">{descripcion}</p>
+      <p class="av_horario_card">fecha de publicacion: {fechaPublicacion}</p>
+      <p class="av_telefono_card">Cuidados Realizados: {cuidadosRealizados}</p>
     </div>
-    <img class="imagen_org_card" src="{imagen}" />
   </div>
 </div>
   `;
 
-let toVisualizeInMap = [];
-
-const onClickCard = (event) => {
-  let long = event.currentTarget.getAttribute('long');
-  let lat = event.currentTarget.getAttribute('lat');
-
-  if(lat && long)
-    map.setView([lat, long], 14);
-}
+  const templateBusqueda = `
+<div class="avisoCardContainer">
+<h3 class="aviso_name_card">Busqueda</h3>
+<div class="body_aviso_card">
+  <div class="datos_container_card">
+    <p class="av_descripcion_card">{descripcion}</p>
+    <p class="av_horario_card">fecha de publicacion: {fechaPublicacion}</p>
+    <p class="av_telefono_card">Direccion: {direccion}</p>
+    <p class="av_telefono_card">Fecha de extravío: {fechaSuceso}</p>
+  </div>
+  </div>
+  <img class="imagen_av_card" src="{imagen}" style={width:100%; height:auto} />
+</div>
+`;
 
 // Iterate over the blog posts array and generate HTML
-function renderOrganizationCards(organizaciones) {
+function renderOrganizationCards(avisos) {
   // antes de dibujar las cards elimina todo
   organizacionesDiv.innerHTML = "";
 
-  //Indico que son las organizaciones a visualizar en el mapa
-  toVisualizeInMap = organizaciones;
-  organizaciones.forEach((organization) => {
-    // Create elements
+  avisos.forEach((aviso) => {
     let orgTemplate = templateAdopcion;
-    orgTemplate = orgTemplate.replace("{nombre}", organization.nombre);
-    orgTemplate = orgTemplate.replace(
+    if(aviso.constructor.name === "AvisoAdopcion"){
+
+      // Create elements
+      orgTemplate = orgTemplate.replace("{nombre}", aviso.nombre);
+      orgTemplate = orgTemplate.replace(
       "{descripcion}",
-      organization.descripcion
-    );
-    orgTemplate = orgTemplate.replace("{horario}", organization.horarios);
-    orgTemplate = orgTemplate.replace("{telefono}", organization.telefono);
-    orgTemplate = orgTemplate.replace("{imagen}", organization.foto);
-    
-    if(organization.direccion.coordenadas){
-      orgTemplate = orgTemplate.replace("{longData}", organization.direccion.coordenadas.x);
-      orgTemplate = orgTemplate.replace("{latData}", organization.direccion.coordenadas.y);
-    }
+      aviso.descripcion
+      );
+      orgTemplate = orgTemplate.replace("{fechaPublicacion}", aviso.fechaPublicacion);
+      orgTemplate = orgTemplate.replace("{cuidadosRealizados}", aviso.cuidadosRealizados);
+      orgTemplate = orgTemplate.replace("{imagen}", aviso.foto);
+      }else{
+      // Create elements
+      orgTemplate = templateBusqueda;
+      orgTemplate = orgTemplate.replace("{nombre}", aviso.nombre);
+      orgTemplate = orgTemplate.replace(
+        "{descripcion}",
+        aviso.descripcion
+        );
+        orgTemplate = orgTemplate.replace("{fechaPublicacion}", aviso.fechaPublicacion);
+        orgTemplate = orgTemplate.replace("{direccion}", aviso.direccion);
+        orgTemplate = orgTemplate.replace("{fechaSuceso}", aviso.fechaSuceso);
+        orgTemplate = orgTemplate.replace("{imagen}", aviso.image);
 
-    // si la organizacion esta destacada agrego la clase correspodiente sino no se agrega nada
-    orgTemplate = orgTemplate.replace(
-      "{destacada}",
-      organization.destacada ? "destacada glass" : ""
-    );
-
-    const orgDiv = document.createElement("div");
-    orgDiv.innerHTML = orgTemplate;
-    /*
-    // Append the post div to the main div
-    */
-    organizacionesDiv.appendChild(orgDiv);
+      }
+      const orgDiv = document.createElement("div");
+      orgDiv.innerHTML = orgTemplate;
+      /*
+      // Append the post div to the main div
+      */
+     organizacionesDiv.appendChild(orgDiv);
   });
-  drawOrganizationInMap(organizaciones);
 }
 
-const templateBusqueda = `
-  <div class="organizationCardContainer {destacada}" onClick="onClickCard(event)" lat='{latData}' long='{longData}'>
-  <h3 class="org_name_card">{nombre}</h3>
-  <div class="body_organization_card">
-    <div class="datos_container_card">
-      <p class="org_descripcion_card">{descripcion}</p>
-      <p class="org_horario_card">Horario: {horario}</p>
-      <p class="org_telefono_card">Telefono: {telefono}</p>
-    </div>
-    <img class="imagen_org_card" src="{imagen}" />
-  </div>
-</div>
-  `;
 
-renderOrganizationCards(buscadorDeOrganizaciones(null, null));
+renderOrganizationCards(buscadorDeAvisos(null, null));
